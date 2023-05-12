@@ -2,7 +2,6 @@
 
 /**
  * _process_ppid - gets process id of current process
- * @param: none
  * Return: pid
 */
 
