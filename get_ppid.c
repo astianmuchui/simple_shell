@@ -8,5 +8,5 @@
 
 pid_t _process_ppid(void)
 {
-    return (getppid());
+	return (getppid());
 }
