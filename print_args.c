@@ -9,6 +9,7 @@
 int *(_count) (char **array)
 {
     int count = 0;
+    
     int *count_ptr = malloc(sizeof(int)); 
     
     if (count_ptr == NULL)
