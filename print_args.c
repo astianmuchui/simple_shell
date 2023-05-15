@@ -8,21 +8,21 @@
 
 int *_count(char **array)
 {
-    int count = 0;
+	int count = 0;
 
-    int *count_ptr = malloc(sizeof(int));
+	int *count_ptr = malloc(sizeof(int));
 
-    if (count_ptr == NULL)
-    {
-        return (0);
-    }
+	if (count_ptr == NULL)
+	{
+		return (0);
+	}
 
-    while (*array != NULL)
-    {
-        count++;
-        array++;
-    }
+	while (*array != NULL)
+	{
+		count++;
+		array++;
+	}
 
-    *count_ptr = count;
-    return (count_ptr;)
+	*count_ptr = count;
+	return (count_ptr;)
 }
