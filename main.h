@@ -10,5 +10,5 @@ pid_t _process_id(void);
 pid_t _process_ppid(void);
 int *(_count) (char **array);
 ssize_t c_getline(char **buffer, size_t *n, FILE *stream);
-
+char *_strtok(char *str, const char *delim);
 #endif
