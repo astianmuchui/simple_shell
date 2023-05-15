@@ -1,7 +1,5 @@
 #include "main.h"
 
-
-
 /**
  * c_getline - rewrite the getline function
  * @buffer: where to store the line
