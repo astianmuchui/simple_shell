@@ -13,7 +13,7 @@ int main(void)
 	char cwd_buff[1024], *argv[1024], *command;
 	int arg_c, i;
 	char path[] = "/bin/";
-	
+	pid_t child_pid;
 	
 	getcwd(cwd_buff, sizeof(cwd_buff));
 
@@ -23,7 +23,7 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO)) /* Check whether file descriptor refers to a terminal or not */
 		{
-			printf("%s: $ ",cwd_buff);
+			printf("($) ");
 			read = getline(&line, &len, stdin);
 
 			if (!read)
@@ -42,18 +42,38 @@ int main(void)
 				argv[i] = _strtok(line, " ");
 			}
 
-
 			/* We need to concatenate path[] with the first 
-				commandline argument since it is a binary */
+			 * commandline argument since it is a binary 
+			*/
 			command = argv[0];
 
 
 			strcat(path, command);
 
+			/* Fork a child process */
+			child_pid = fork();
 
+			if (child_pid == -1)
+			{
+				perror("Error: ");
+				return (1);
+			}
 
-			/* printf(" Args: %d, 1st Command:  %s", arg_c ,path); */
-
+			if (child_pid == 0)
+			{
+				/* Child process */
+				if (!execve(path, argv, NULL))
+				{
+					perror("Error: ");
+				}
+			}
+			else
+			{
+				/* Parent process */
+				printf("Waiting");
+				wait(NULL);
+			}
+			
 			/* Reset commands and path to null */
 
 			for (i = 0; i < arg_c; i++)

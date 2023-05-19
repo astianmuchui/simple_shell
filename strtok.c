@@ -6,6 +6,7 @@
 * @delim: delimiters to be used
 * Return: pointer to next character
 */
+
 char *_strtok(char *str, const char *delim)
 {
     static char *save;
