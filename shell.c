@@ -62,9 +62,9 @@ int main(void)
 			if (child_pid == 0)
 			{
 				/* Child process */
-				if (!execve(path, argv, NULL))
+				if (execve(path, argv, NULL))
 				{
-					perror("Error: ");
+					printf("Doing.... \n");
 				}
 			}
 			else
@@ -73,7 +73,7 @@ int main(void)
 				printf("Waiting");
 				wait(NULL);
 			}
-			
+
 			/* Reset commands and path to null */
 
 			for (i = 0; i < arg_c; i++)
