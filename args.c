@@ -18,19 +18,4 @@ int *_count(char **array)
 	return (count);
 }
 
-/**
-* main - get commandline arguments
-* @av: Null terminated array of strings
-* @ac: number of items in the @av array
-* Return: always 0
-*/
-
-int main(int ac, char **av)
-{
-	int *arr_count = _count(av);
-
-	printf("%d\n", *arr_count = ac);
-
-	return (0);
-}
 
