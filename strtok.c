@@ -28,10 +28,9 @@ char *_strtok(char *str, const char *delim)
 				str[i] = '\0'; /* Null terminator: End of current function call */
 				save = &str[i + 1]; /* Pointer to next char: Next call goes from here */
 				return (str);
-            		}
-        	}
-    	}
-
+			}
+		}
+	}
 	if (str == save) /* No more tokens left */
 		return (NULL);
 
@@ -40,3 +39,4 @@ char *_strtok(char *str, const char *delim)
 
 	return (token);
 }
+
