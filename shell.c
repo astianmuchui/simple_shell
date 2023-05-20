@@ -4,7 +4,6 @@
 * main - display prompt
 * Return: always
 */
-
 int main(void)
 {
 	char *line = NULL;
@@ -14,15 +13,14 @@ int main(void)
 	int arg_c, i;
 	char path[] = "/bin/";
 	pid_t child_pid;
-	
+
 	getcwd(cwd_buff, sizeof(cwd_buff));
 
 
 
 	while (1)
 	{
-		if (isatty(STDIN_FILENO)) /* Check whether file descriptor refers to a terminal or not */
-		{
+		if (isatty(STDIN_FILENO)) /* Check whether file descriptor refers to a terminal or not */		{
 			printf("($) ");
 			read = getline(&line, &len, stdin);
 
@@ -34,16 +32,14 @@ int main(void)
 			}
 
 			/* Use strtok to create an array of strings */
-			
 			arg_c = arg_count(line);
-			
 			for (i = 0; i < arg_c; i++)
 			{
 				argv[i] = _strtok(line, " ");
 			}
 
-			/* We need to concatenate path[] with the first 
-			 * commandline argument since it is a binary 
+			/* We need to concatenate path[] with the first
+			 * commandline argument since it is a binary
 			*/
 			command = argv[0];
 
