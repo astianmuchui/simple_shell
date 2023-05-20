@@ -24,15 +24,15 @@ char *_strtok(char *str, const char *delim)
 		for (j = 0; delim[j] != '\0'; j++) /* loop through delimiter */
 		{
 			if (str[i] == delim[j]) /* Checks if delimiter is present in the string */
-			{	
+			{
 				str[i] = '\0'; /* Null terminator: End of current function call */
 				save = &str[i + 1]; /* Pointer to next char: Next call goes from here */
 				return (str);
-            		}	
-        	}			
-    	}		
+            		}
+        	}
+    	}
 
-	if (str == save) /* No more tokens left */	
+	if (str == save) /* No more tokens left */
 		return (NULL);
 
 	token = str;
