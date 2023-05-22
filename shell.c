@@ -9,80 +9,39 @@ int main(void)
 	char *line = NULL;
 	size_t len = 0;
 	size_t read;
-	char cwd_buff[1024], *argv[1024], *command;
-	int arg_c, i;
-	char path[] = "/bin/";
-	pid_t child_pid;
-
-	getcwd(cwd_buff, sizeof(cwd_buff)); /* Get Current working directory */
 
 	while (1)
 	{
 		if (isatty(STDIN_FILENO)) /* Check whether file descriptor refers to a terminal or not */		{
+		{
 			printf("($) ");
 			read = getline(&line, &len, stdin);
 
 			if (!read)
 			{
-				printf("Error: Failed to read line\n");
+				printf("Error: Could not read command \n");
 
 				return (-1);
 			}
 
-			/* Use strtok to create an array of strings */
-			arg_c = arg_count(line);
-			for (i = 0; i < arg_c; i++)
+			if (handle_command(line) != -1) /* Command was read and binary exists  */
 			{
-				argv[i] = _strtok(line, " ");
-			}
-
-			/* We need to concatenate path[] with the first
-			 * commandline argument since it is a binary
-			*/
-			command = argv[0];
-
-
-			strcat(path, command);
-
-			/* Fork a child process */
-			child_pid = fork();
-
-			if (child_pid == -1)
-			{
-				perror("Error: ");
-				return (1);
-			}
-
-			if (child_pid == 0)
-			{
-				/* Child process */
-				if (execve(path, argv, NULL))
+				if (execute(line) == -1)
 				{
-					printf("Doing.... \n");
+					printf("Error: Could not execute command \n");
+
+					return (-1);
 				}
+
 			}
-			else
-			{
-				/* Parent process */
-				printf("Waiting");
-				wait(NULL);
-			}
-
-			/* Reset commands and path to null */
-
-			for (i = 0; i < arg_c; i++)
-			{
-				argv[i] = NULL; /* clear array to prevent re-execution */
-			}
-
-			path[0] = '\0'; /* Null it out to prevent conactenation  */
-
 		}
 
+			
 	}
 
 
 		free(line);
 
 		return (0);
+}
 }
