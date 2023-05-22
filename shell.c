@@ -23,9 +23,10 @@ int main(void)
 
 				return (-1);
 			}
-
-			if (handle_command(line) != -1) /* Command was read and binary exists  */
+			
+			else if (handle_command(line) != -1) /* Command was read and binary exists  */
 			{
+				printf("We made it here \n");
 				if (execute(line) == -1)
 				{
 					printf("Error: Could not execute command \n");
@@ -40,8 +41,8 @@ int main(void)
 	}
 
 
-		free(line);
+	free(line);
 
-		return (0);
+	return (0);
 }
 }
