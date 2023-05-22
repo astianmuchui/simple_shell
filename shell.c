@@ -14,9 +14,7 @@ int main(void)
 	char path[] = "/bin/";
 	pid_t child_pid;
 
-	getcwd(cwd_buff, sizeof(cwd_buff));
-
-
+	getcwd(cwd_buff, sizeof(cwd_buff)); /* Get Current working directory */
 
 	while (1)
 	{

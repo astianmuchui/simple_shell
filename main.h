@@ -11,7 +11,7 @@
 #include <limits.h>
 #include <dirent.h>
 #include <signal.h>
-
+#include <sys/stat.h>
 
 pid_t _process_id(void);
 pid_t _process_ppid(void);

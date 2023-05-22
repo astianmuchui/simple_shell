@@ -18,3 +18,4 @@ int arg_count(char *str)
     }
     return (count + 1);
 }
+
