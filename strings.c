@@ -31,7 +31,7 @@ int _strlen(char *string)
 
 	for (i = 0; string[i] != '\0'; i++)
 	{
-		count++;		
+		count++;
 	}
 
 	return (count);
@@ -44,9 +44,9 @@ int _strlen(char *string)
  * Return: 1 or 0
 */
 
-int binary_search(char** binaries, char* target)
+int binary_search(char **binaries, char *target)
 {
-	int buffer_count,i;
+	int buffer_count, i;
 
 	buffer_count = binCount();
 
