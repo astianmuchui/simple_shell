@@ -1,28 +1,41 @@
 #include "main.h"
 
-
 /**
- * validate_command - checks if command is in /bin
- * @command: command entered
- * Return: 1 or -1
+ * extract_bin - extract binary file called from command
+ * @command: command parsed
+ * @binary: buffer to store binary file name
+ * Return: pointer to char
 */
 
-int validate_command(char *command)
+
+void *extract_bin(char *command, char *binary)
 {
-    /* Tokenize string to obtain first command */
-    char **binaries, *binary;
+    int i = 0, j = 0;
 
-    binary = _strtok(command, " ");
-    binaries = _binarypath();
-
-    if (binary_search(binaries, binary) == 1)
+    while (command[i] == ' ')
     {
-        return (1);
-    }
-    else
-    {
-        return (-1);
+        i++;
     }
 
-    return (0);
+    while (command[i] != ' ' && command[i] != '\0')
+    {
+        binary[j] = command[i];
+        i++;
+        j++;
+    }
+
+    binary[j] = '\0';
+}
+
+
+int main(void)
+{
+    char *command = "nmcli -nlxa";
+    char binary[100];
+
+    extract_bin(command, binary);
+
+    printf("%s\n", binary);
+
+
 }

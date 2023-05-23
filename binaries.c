@@ -10,7 +10,8 @@ char** _binarypath(void)
     int count = 0;
 
     DIR* dir = opendir("/bin");
-    if (dir == NULL) {
+    if (dir == NULL)
+    {
         perror("Failed to open directory");
         return NULL;
     }
@@ -31,9 +32,9 @@ char** _binarypath(void)
     }
 
     closedir(dir);
-    binaries[count] = NULL;  // Add NULL terminator to mark the end of the array
+    binaries[count] = NULL;
 
-    return binaries;
+    return (binaries);
 }
 
 /**
