@@ -40,5 +40,7 @@ int _strlen(char *string);
 int _strcmp(const char *s1, const char*s2);
 
 int validate_command(char *command);
+void *extract_bin(char *command, char *binary);
+
 
 #endif
