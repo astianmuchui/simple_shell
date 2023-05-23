@@ -9,7 +9,7 @@ char **_binarypath(void)
 <<<<<<< HEAD
 	char **binaries = malloc(MAX_BINARIES * sizeof(char *));
 	int count = 0;
-	
+
 	DIR *dir = opendir("/bin");
 
 	if (dir == NULL)
@@ -34,7 +34,7 @@ char **_binarypath(void)
 			}
 		}
 	}
-	
+
 	closedir(dir);
 	binaries[count] = NULL;  // Add NULL terminator to mark the end of the array
 
@@ -59,7 +59,8 @@ char **_binarypath(void)
             count++;
             if (count >= MAX_BINARIES)
             {
-                printf("Maximum number of binaries reached. Some entries may be omitted.\n");
+                printf
+("Maximum number of binaries reached. Some entries may be omitted.\n");
                 break;
             }
         }
