@@ -33,9 +33,12 @@ int execute(char *command);
 int in_arr(char needle, char haystack[]);
 char **_binarypath(void);
 
-int binary_search(char **binaries, const char *binary);
+int binCount(void);
+int binary_search(char **binaries, char *binary);
+
 int _strlen(char *string);
 int _strcmp(const char *s1, const char*s2);
 
+int validate_command(char *command);
 
 #endif
