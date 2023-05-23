@@ -16,7 +16,7 @@
 #include <sys/stat.h>
 
 #define MAX_ARGUMENTS 1024
-#define MAX_BINARIES 100
+#define MAX_BINARIES 4096
 
 pid_t _process_id(void);
 pid_t _process_ppid(void);
@@ -32,5 +32,10 @@ int execute(char *command);
 
 int in_arr(char needle, char haystack[]);
 char **_binarypath(void);
+
+int binary_search(char **binaries, const char *binary);
+int _strlen(char *string);
+int _strcmp(const char *s1, const char*s2);
+
 
 #endif

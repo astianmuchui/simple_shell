@@ -12,11 +12,14 @@ char** _binarypath(void)
     }
 
     struct dirent* entry;
-    while ((entry = readdir(dir)) != NULL) {
-        if (entry->d_type == DT_REG) {
+    while ((entry = readdir(dir)) != NULL)
+    {
+        if (entry->d_type == DT_REG)
+        {
             binaries[count] = strdup(entry->d_name);
             count++;
-            if (count >= MAX_BINARIES) {
+            if (count >= MAX_BINARIES)
+            {
                 printf("Maximum number of binaries reached. Some entries may be omitted.\n");
                 break;
             }
@@ -27,4 +30,20 @@ char** _binarypath(void)
     binaries[count] = NULL;  // Add NULL terminator to mark the end of the array
 
     return binaries;
+}
+
+int main(void)
+{
+    char** binaries = _binarypath();
+    if (binaries != NULL)
+    {
+        for (int i = 0; binaries[i] != NULL; i++)
+        {
+            printf("%s\n", binaries[i]);
+            free(binaries[i]);
+        }
+        free(binaries);
+    }
+
+    return 0;
 }

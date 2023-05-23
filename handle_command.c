@@ -11,14 +11,17 @@ char **_binarypath(void)
     int count = 0;
 
     DIR* dir = opendir("/bin");
-    if (dir == NULL) {
+    if (dir == NULL)
+	{
         perror("Failed to open directory");
         return NULL;
     }
 
     struct dirent* entry;
-    while ((entry = readdir(dir)) != NULL) {
-        if (entry->d_type == DT_REG) {
+    while ((entry = readdir(dir)) != NULL)
+	{
+        if (entry->d_type == DT_REG)
+		{
             binaries[count] = strdup(entry->d_name);
             count++;
             if (count >= MAX_BINARIES) {
@@ -44,7 +47,7 @@ extern char **environ;
 
 int handle_command(char *command)
 {
-	char *buffer[1024], *binary,  arr, *binaries;
+	char *buffer[MAX_ARGUMENTS], *binary,  **arr, *binaries;
 	int argc, i; /* number of arguments */
 
 	argc = arg_count(command); /* Use custom strtok to create an array of strings */
@@ -58,9 +61,9 @@ int handle_command(char *command)
 
 
 	arr = _binarypath();
-	binaries = &arr;
 
-	if (in_arr(*binary, binaries) == -1) /* The command does not exist */
+
+	if (in_arr(*binary, *arr) == -1) /* The command does not exist */
 		return (-1);
 	else
 		return (1);
@@ -132,7 +135,7 @@ int arg_count(char *str)
 int main(void)
 {
 	char cmd[] = "chmod u+x .";
-	char **array, *chmod;
+	char **binaries, *chmod;
 	int status, *arr_count, i;
 	int argc = arg_count(cmd);
 	printf("%d args \n", argc);
@@ -143,14 +146,10 @@ int main(void)
 		printf("Chmod present :) \n");
 	}
 
-	array = _binarypath();
+	binaries = _binarypath();
 
-	arr_count = _count(array);
-
-	for (i = 0; i < *arr_count; i++)
-	{
-		printf("[%d] %s \n", i, array[i]);
-	}
-
+	arr_count = _count(binaries);
+	printf("%d in array \n", *arr_count);
+	
 
 }
