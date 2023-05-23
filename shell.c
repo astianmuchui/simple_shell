@@ -12,37 +12,26 @@ int main(void)
 
 	while (1)
 	{
-		if (isatty(STDIN_FILENO)) /* Check whether file descriptor refers to a terminal or not */		{
+		if (isatty(STDIN_FILENO)) /* Check whether file descriptor refers to a terminal or not */
 		{
 			printf("($) ");
 			read = getline(&line, &len, stdin);
 
 			if (!read)
 			{
-				printf("Error: Could not read command \n");
-
 				return (-1);
 			}
 			
-			else if (handle_command(line) != -1) /* Command was read and binary exists  */
+			if (handle_command(line) != -1)
 			{
-				printf("We made it here \n");
-				if (execute(line) == -1)
-				{
-					printf("Error: Could not execute command \n");
-
-					return (-1);
-				}
-
+				printf("Hata siwes kusema mengi \n");
 			}
 		}
-
-			
+		
 	}
 
 
 	free(line);
 
 	return (0);
-}
 }

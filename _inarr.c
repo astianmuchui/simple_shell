@@ -15,8 +15,6 @@ int in_arr(char needle, char haystack[])
     {
         if (haystack[i] == needle)
             return (1);
-        else
-            return (-1);
         i++;
     }
 

@@ -1,5 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
+#define _GNU_SOURCE
+
 
 #include <stdio.h>
 #include <unistd.h>
@@ -13,7 +15,8 @@
 #include <signal.h>
 #include <sys/stat.h>
 
-
+#define MAX_ARGUMENTS 1024
+#define MAX_BINARIES 100
 
 pid_t _process_id(void);
 pid_t _process_ppid(void);
@@ -28,6 +31,6 @@ int handle_command(char *command);
 int execute(char *command);
 
 int in_arr(char needle, char haystack[]);
-char _binarypath(void);
+char **_binarypath(void);
 
 #endif
