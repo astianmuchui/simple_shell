@@ -4,6 +4,7 @@
 * main - display prompt
 * Return: always
 */
+
 int main(void)
 {
 	char *line = NULL;
@@ -22,7 +23,7 @@ int main(void)
 				return (-1);
 			}
 			
-			if (handle_command(line) != -1)
+			if (validate_command(line) != -1)
 			{
 				printf("Hata siwes kusema mengi \n");
 			}

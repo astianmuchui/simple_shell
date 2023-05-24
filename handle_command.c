@@ -10,26 +10,29 @@ extern char **environ;
 
 int handle_command(char *command)
 {
-	char *buffer[MAX_ARGUMENTS], *binary,  **arr, *binaries;
-	int argc, i; /* number of arguments */
+	char *ext = "exit";
 
-	argc = arg_count(command); /* Use custom strtok to create an array of strings */
+	/* Make sure command is valid */
 
-	for (i = 0; i < argc; i++)
+	if (validate_command(command) == 1)
 	{
-		buffer[i] = _strtok(command, " ");
+		/* Handle exit command */
+		if (command == ext)
+		{
+			exit(1);
+		}
+
+		return (1);
 	}
 
-	binary = buffer[0]; /* Since all commands must be in path */
-
-
-	arr = _binarypath();
-
-
-	if (in_arr(*binary, *arr) == -1) /* The command does not exist */
-		return (-1);
 	else
-		return (1);
+	{
+		perror("No such file or directory");
+		exit(-1);
+		return (-1);
+	}
+
+
 
 	return (0);
 }
@@ -95,11 +98,12 @@ int arg_count(char *str)
     return (count + 1);
 }
 
+/*
+
 int main(void)
 {
 	char cmd[] = "chmod u+x .";
 	char **binaries, *chmod;
-	int status, *arr_count, i;
 	int argc = arg_count(cmd);
 	printf("%d args \n", argc);
 	
@@ -117,3 +121,4 @@ int main(void)
 	}
 
 }
+*/

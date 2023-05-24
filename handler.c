@@ -8,7 +8,7 @@
 */
 
 
-void *extract_bin(char *command, char *binary)
+void extract_bin(char *command, char *binary)
 {
     int i = 0, j = 0;
 
@@ -27,6 +27,17 @@ void *extract_bin(char *command, char *binary)
     binary[j] = '\0';
 }
 
+int validate_command(char *command)
+{
+    char binary[MAX_ARGUMENTS];
+    char **binaries;
+    extract_bin(command, binary);
+
+    binaries = _binarypath();
+
+    return (binary_search(binaries, binary));
+    
+}
 
 int main(void)
 {
@@ -37,5 +48,5 @@ int main(void)
 
     printf("%s\n", binary);
 
-
 }
+

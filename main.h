@@ -16,7 +16,7 @@
 #include <sys/stat.h>
 
 #define MAX_ARGUMENTS 1024
-#define MAX_BINARIES 4096
+#define MAX_BINARIES 8192
 
 pid_t _process_id(void);
 pid_t _process_ppid(void);
@@ -40,7 +40,7 @@ int _strlen(char *string);
 int _strcmp(const char *s1, const char*s2);
 
 int validate_command(char *command);
-void *extract_bin(char *command, char *binary);
+void extract_bin(char *command, char *binary);
 
 
 #endif
