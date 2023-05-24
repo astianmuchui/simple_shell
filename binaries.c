@@ -6,7 +6,7 @@
 */
 char **_binarypath(void)
 {
-<<<<<<< HEAD
+
 	char **binaries = malloc(MAX_BINARIES * sizeof(char *));
 	int count = 0;
 
@@ -39,7 +39,6 @@ char **_binarypath(void)
 	binaries[count] = NULL;  // Add NULL terminator to mark the end of the array
 
 	return (binaries);
-=======
     char** binaries = malloc(MAX_BINARIES * sizeof(char*));
     int count = 0;
 
@@ -70,7 +69,6 @@ char **_binarypath(void)
     binaries[count] = NULL;
 
     return (binaries);
->>>>>>> 8707095425474182f597bc6596d74b144eb9a882
 }
 
 /**
