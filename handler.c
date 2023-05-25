@@ -36,17 +36,17 @@ int validate_command(char *command)
     binaries = _binarypath();
 
     return (binary_search(binaries, binary));
-    
+
 }
 
 int main(void)
 {
-    char *command = "nmcli -nlxa";
-    char binary[100];
+	char *command = "nmcli -nlxa";
+	char binary[100];
 
-    extract_bin(command, binary);
+extractbin(command, binary);
 
-    printf("%s\n", binary);
-
+printf("%s\n", binary);
+return (0);
 }
 
