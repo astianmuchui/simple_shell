@@ -15,21 +15,20 @@ void *_realloc(void *buffer, size_t size)
 	/* If the buffer is null, allocate memory of size new_size */
 	if (buffer == NULL)
 	{
-		return malloc(size);
+		return (malloc(size));
 	}
 
 	if (size == 0)
-	{	
+	{
 		free(buffer);
-		return NULL;
+		return (NULL);
 	}
-        
 	/* New buffer size */
 	new_buffer = malloc(size);
 
 	if (new_buffer == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 
 	/* Copy the data from the old buffer to the new buffer */
@@ -38,5 +37,5 @@ void *_realloc(void *buffer, size_t size)
 
 	free(buffer);
 
-	return new_buffer;
+	return (new_buffer);
 }
