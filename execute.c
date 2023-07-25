@@ -18,13 +18,16 @@ int _exec_(char **args)
 	if (pid == 0)
 	{
 		if (_cmd_isvalid(args[0])) /* Validate Command */
-	}	
+		{
 			envp = returnenv();
 
 			if (execve(joinPath(BIN, *args), args, envp) == -1)
+			{
 				perror("Unable to execute");
+			}
 		}
 	}
+	
 	else if (pid < 0)
 	{
 		perror("errors in forking.\n");
