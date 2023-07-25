@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+* printenv - prints current environment
+* Return: none
+*/
+
 void printenv(void)
 {
 	char **env = environ;
@@ -10,6 +15,12 @@ void printenv(void)
 		printf("%s\n", env[i]);
 	}
 }
+
+/**
+* contains_builtin - check if a builtin command was entered
+* @arg: command
+* Return: 1 or 0
+*/
 
 int contains_builtin(char **arg)
 {
@@ -35,10 +46,16 @@ int contains_builtin(char **arg)
 	return (-1);
 }
 
+/**
+* cd - changes a working directory
+* @args: directory
+* Return: none
+*/
+
 void cd(char **args)
 {
 	DIR *dir;
-	
+
 	if (args == NULL)
 	{
 		perror("Please provide a directory\n");
@@ -46,18 +63,23 @@ void cd(char **args)
 
 	/* Check if the directory actually exists */
 	dir = opendir(*args);
-	
+
 	if (dir == NULL)
 	{
-  		perror("Directory does not exist\n");
+		perror("Directory does not exist\n");
 	}
 	else
 	{
 		chdir(*args);
 		closedir(dir);
 	}
-
 }
+
+/**
+* exit_shell - exits the shell
+* @arg: exit code
+* Return: none
+*/
 
 void exit_shell(int arg)
 {

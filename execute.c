@@ -27,7 +27,7 @@ int _exec_(char **args)
 			}
 		}
 	}
-	
+
 	else if (pid < 0)
 	{
 		perror("errors in forking.\n");
