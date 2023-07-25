@@ -11,7 +11,6 @@ void interactive(void)
 	int status = -1;
 
 	do {
-		printf("($) ");
 		line = _get_cmd_();
 		args = getArgs(line);
 		status = _exec_(args);
