@@ -20,18 +20,14 @@ int _exec_(char **args)
 
 		if (pid == 0)
 		{
-
 			envp = returnenv();
-
 			if (execve(*args, args, envp) == -1)
 			{
 				perror("Error executing command");
 			}
 		}
 
-
-
-		else if (pid < 0)
+	else if (pid < 0)
 	{
 		perror("errors in forking.\n");
 	}
@@ -49,7 +45,6 @@ int _exec_(char **args)
 	{
 		perror("Command not found");
 	}
-	fflush(stdout);
 	return (-1);
 }
 
