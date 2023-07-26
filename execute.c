@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * _exec_ - execute command
- * @args: arguments
- * Return: -1
- */
+* _exec_ - execute command
+* @args: arguments
+* Return: -1
+*/
 int _exec_(char **args)
 {
 	pid_t pid;
@@ -21,10 +21,14 @@ int _exec_(char **args)
 		{
 			envp = returnenv();
 
-			if (execve(joinPath(BIN, *args), args, envp) == -1)
+			if (execve(joinPath(BIN, args[0]), args, envp) == -1)
 			{
-				perror("Unable to execute");
+				perror("Error executing command");
 			}
+		}
+		else
+		{
+			perror("Invalid command");
 		}
 	}
 
@@ -40,13 +44,15 @@ int _exec_(char **args)
 			waitpid(pid, &status, WUNTRACED);
 		}
 	}
+
+	fflush(stdout);
 	return (-1);
 }
 
 /**
- * returnenv - returns environment variables
- * Return: array
- */
+* returnenv - returns environment variables
+* Return: array
+*/
 
 char **returnenv(void)
 {

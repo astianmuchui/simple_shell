@@ -25,15 +25,16 @@ void printenv(void)
 int contains_builtin(char **arg)
 {
 	int i;
+	char *argp = (char *) arg;
 	char *builtins[] = {
 		"cd",
 		"env",
 		"exit"
 	};
 
-	for (i = 0; builtins[i] != NULL; i++)
+	for (i = 0; i < 3; i++)
 	{
-		if (_str_contains(arg, (char **)builtins[i])) /* Typecast */
+		if (argp == builtins[i])
 		{
 			return (1);
 		}
@@ -96,4 +97,3 @@ void exit_shell(int arg)
 		exit(arg);
 	}
 }
-

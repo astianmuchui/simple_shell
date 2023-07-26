@@ -29,8 +29,6 @@ int _str_contains(char **needle, char **haystack)
 	return (0);
 }
 
-
-
 /**
 * _count - count the elems in an array
 * @array: array

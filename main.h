@@ -46,6 +46,9 @@ void printenv(void);
 int contains_builtin(char **arg);
 void cd(char **args);
 
+char *getarg(char **args);
+
 char **returnenv(void);
+
 
 #endif

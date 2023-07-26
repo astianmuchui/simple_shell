@@ -12,7 +12,6 @@ char *_get_cmd_(void)
 	size_t bufsize = 0;
 	ssize_t characters;
 
-	printf("($) ");
 	characters = getline(&line, &bufsize, stdin);
 
 	if (characters == -1)

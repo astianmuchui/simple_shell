@@ -11,10 +11,11 @@ void interactive(void)
 	int status = -1;
 
 	do {
+		printf("($) ");
 		line = _get_cmd_();
 		args = getArgs(line);
-		status = _exec_(args);
 
+		status = _exec_(args); /* Execute command */
 		free(line); /* Free memory allocated to line */
 		free(args); /* Free memory allocated to args */
 
@@ -24,6 +25,7 @@ void interactive(void)
 		}
 
 	} while (status == -1);
+
 }
 
 
@@ -132,7 +134,6 @@ char *joinPath(char *dir, char *file)
 int _cmd_isvalid(char *cmd)
 {
 	/* Check if the command is an executable in the current path */
-
 	if (access(joinPath(PWD, cmd), F_OK) == 0)
 	{
 		/* The file also needs to have a+x permissions */
@@ -153,8 +154,16 @@ int _cmd_isvalid(char *cmd)
 		return (1);
 	}
 
-	else
+	else if (contains_builtin((char **) cmd))
 	{
-		return (-1);
+		if (strcmp(cmd, "env"))
+		{
+			printenv();
+			return (0);
+		}
+
+		return (1);
 	}
+
+	return (-1);
 }
