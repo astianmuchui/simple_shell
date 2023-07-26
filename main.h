@@ -28,6 +28,7 @@ char *_get_cmd_(void);
 
 char **getArgs(char *line);
 int _exec_(char **args);
+
 int _str_contains(char **needle, char **haystack);
 void shellNotInteractive(int ac, char **av);
 char *joinPath(char *dir, char *file);
@@ -39,12 +40,15 @@ int *_count(char **array);
 char *_strtok(char *str, const char *delim);
 char *eliminateWhitespaces(char *token);
 
-void *_realloc( void *buffer, size_t size );
+void *_realloc(void *buffer, size_t size);
 void printenv(void);
 
 int contains_builtin(char **arg);
 void cd(char **args);
 
+char *getarg(char **args);
+
 char **returnenv(void);
+
 
 #endif

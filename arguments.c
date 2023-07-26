@@ -2,8 +2,8 @@
 
 
 /**
- * _get_cmd_ - get command from stdin
- * Return: char ptr
+* _get_cmd_ - get command from stdin
+* Return: char ptr
 */
 
 char *_get_cmd_(void)
@@ -12,12 +12,13 @@ char *_get_cmd_(void)
 	size_t bufsize = 0;
 	ssize_t characters;
 
+        write(STDIN_FILENO, "($) ", 4);
 	characters = getline(&line, &bufsize, stdin);
+
 	if (characters == -1)
 	{
 		if (feof(stdin))
 		{
-			printf("\n");
 			exit(EXIT_SUCCESS);
 		}
 		else
@@ -26,6 +27,7 @@ char *_get_cmd_(void)
 			exit(EXIT_FAILURE);
 		}
 	}
+
 	return (line);
 }
 

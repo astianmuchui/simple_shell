@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * _exec_ - execute command
- * @args: arguments
- * Return: -1
- */
+* _exec_ - execute command
+* @args: arguments
+* Return: -1
+*/
 int _exec_(char **args)
 {
 	pid_t pid;
@@ -13,18 +13,24 @@ int _exec_(char **args)
 
 	if (args[0] == NULL)
 		return (-1);
-	pid = fork();
-
-	if (pid == 0)
+	
+	if (_cmd_isvalid(args[0])) /* Validate Command */
 	{
-		if (_cmd_isvalid(args[0])) /* Validate Command */
-	}	
+		pid = fork();
+
+		if (pid == 0)
+		{
+
 			envp = returnenv();
 
-			if (execve(joinPath(BIN, *args), args, envp) == -1)
-				perror("Unable to execute");
+			if (execve(joinPath(BIN, args[0]), args, envp) == -1)
+			{
+				perror("Error executing command");
+			}
 		}
-	}
+
+	
+
 	else if (pid < 0)
 	{
 		perror("errors in forking.\n");
@@ -37,13 +43,20 @@ int _exec_(char **args)
 			waitpid(pid, &status, WUNTRACED);
 		}
 	}
+	
+	}
+	else
+	{
+		perror("Command not found");
+	}
+	fflush(stdout);
 	return (-1);
 }
 
 /**
- * returnenv - returns environment variables
- * Return: array
- */
+* returnenv - returns environment variables
+* Return: array
+*/
 
 char **returnenv(void)
 {

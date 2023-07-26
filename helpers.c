@@ -1,11 +1,10 @@
 #include "main.h"
 
-
 /**
- * str_contains - check if string contains substring
- * @needle: substring
- * @haystack: string
- * Return: 1 or 0
+* _str_contains - check if string contains substring
+* @needle: substring
+* @haystack: string
+* Return: 1 or 0
 */
 
 int _str_contains(char **needle, char **haystack)
@@ -17,7 +16,10 @@ int _str_contains(char **needle, char **haystack)
 		while (haystack[j] != NULL)
 		{
 			if (strcmp(needle[i], haystack[j]) == 0)
+<<<<<<< HEAD
 			/* Need to implement custom strcmp */
+=======
+>>>>>>> 2f7acaae146f777c2596379b7fe3104be88827e2
 			{
 				return (1);
 			}
@@ -30,8 +32,6 @@ int _str_contains(char **needle, char **haystack)
 
 	return (0);
 }
-
-
 
 /**
 * _count - count the elems in an array
@@ -53,9 +53,9 @@ int *_count(char **array)
 
 
 /**
- * _strlen - count string length
- * @string: string to count
- * Return: number
+* _strlen - count string length
+* @string: string to count
+* Return: number
 */
 
 int _strlen(char *string)
@@ -71,9 +71,9 @@ int _strlen(char *string)
 }
 
 /**
- * eliminateWhitespaces - eliminate whitespaces from a string
- * @token: string to be trimmed
- * Return: ptr to trimmed string
+* eliminateWhitespaces - eliminate whitespaces from a string
+* @token: string to be trimmed
+* Return: ptr to trimmed string
 */
 
 char *eliminateWhitespaces(char *token)
@@ -112,7 +112,9 @@ char *_strtok(char *str, const char *delim)
 	/* Check if no string is provided */
 
 	if (str == NULL)
+	{
 		str = save;
+	}
 
 	len = _strlen(str);
 
@@ -120,8 +122,9 @@ char *_strtok(char *str, const char *delim)
 	{
 		for (j = 0; delim[j] != '\0'; j++) /* loop through delimiter */
 		{
-			if (str[i] == delim[j]) /* Checks if delimiter is present in the string */
+			if (str[i] == delim[j])
 			{
+				/* Checks if delimiter is present in the string */
 				str[i] = '\0'; /* Null terminator: End of current function call */
 				save = &str[i + 1]; /* Pointer to next char: Next call goes from here */
 				return (eliminateWhitespaces(str));
@@ -130,7 +133,9 @@ char *_strtok(char *str, const char *delim)
 	}
 
 	if (str == save) /* No more tokens left */
+	{
 		return (NULL);
+	}
 
 	token = str;
 	save = NULL; /* Reset to Null */
