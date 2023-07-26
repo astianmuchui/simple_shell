@@ -12,6 +12,7 @@ char *_get_cmd_(void)
 	size_t bufsize = 0;
 	ssize_t characters;
 
+        write(STDIN_FILENO, "($) ", 4);
 	characters = getline(&line, &bufsize, stdin);
 
 	if (characters == -1)
@@ -26,6 +27,7 @@ char *_get_cmd_(void)
 			exit(EXIT_FAILURE);
 		}
 	}
+
 	return (line);
 }
 
