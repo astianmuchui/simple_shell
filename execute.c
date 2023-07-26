@@ -23,7 +23,7 @@ int _exec_(char **args)
 
 			envp = returnenv();
 
-			if (execve(joinPath(BIN, args[0]), args, envp) == -1)
+			if (execve(*args, args, envp) == -1)
 			{
 				perror("Error executing command");
 			}
@@ -43,7 +43,7 @@ int _exec_(char **args)
 			waitpid(pid, &status, WUNTRACED);
 		}
 	}
-	
+
 	}
 	else
 	{
