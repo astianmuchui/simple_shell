@@ -13,12 +13,14 @@ int _exec_(char **args)
 
 	if (args[0] == NULL)
 		return (-1);
-	pid = fork();
-
-	if (pid == 0)
+	
+	if (_cmd_isvalid(args[0])) /* Validate Command */
 	{
-		if (_cmd_isvalid(args[0])) /* Validate Command */
+		pid = fork();
+
+		if (pid == 0)
 		{
+
 			envp = returnenv();
 
 			if (execve(joinPath(BIN, args[0]), args, envp) == -1)
@@ -26,12 +28,8 @@ int _exec_(char **args)
 				perror("Error executing command");
 			}
 		}
-		else
-		{
-			perror("Invalid command");
-		}
 
-	}
+	
 
 	else if (pid < 0)
 	{
@@ -45,7 +43,12 @@ int _exec_(char **args)
 			waitpid(pid, &status, WUNTRACED);
 		}
 	}
-
+	
+	}
+	else
+	{
+		perror("Command not found");
+	}
 	fflush(stdout);
 	return (-1);
 }
