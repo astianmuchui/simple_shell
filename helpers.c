@@ -10,24 +10,25 @@
 
 int _str_contains(char **needle, char **haystack)
 {
-        int i = 0, j = 0;
+	int i = 0, j = 0;
 
-        while (needle[i] != NULL)
-        {
-                while (haystack[j] != NULL)
-                {
-                        if (strcmp(needle[i], haystack[j]) == 0) /* Need to implement custom strcmp */
-                        {
-                                return (1);
-                        }
+	while (needle[i] != NULL)
+	{
+		while (haystack[j] != NULL)
+		{
+			if (strcmp(needle[i], haystack[j]) == 0)
+			/* Need to implement custom strcmp */
+			{
+				return (1);
+			}
 
-                        j++;
-                }
+			j++;
+		}
 
-                i++;
-        }
+		i++;
+	}
 
-        return (0);
+	return (0);
 }
 
 
@@ -108,7 +109,7 @@ char *_strtok(char *str, const char *delim)
 	int i, j;
 	int len;
 
-        /* Check if no string is provided */
+	/* Check if no string is provided */
 
 	if (str == NULL)
 		str = save;
@@ -123,7 +124,7 @@ char *_strtok(char *str, const char *delim)
 			{
 				str[i] = '\0'; /* Null terminator: End of current function call */
 				save = &str[i + 1]; /* Pointer to next char: Next call goes from here */
-				return ( eliminateWhitespaces(str));
+				return (eliminateWhitespaces(str));
 			}
 		}
 	}
