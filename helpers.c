@@ -16,10 +16,8 @@ int _str_contains(char **needle, char **haystack)
 		while (haystack[j] != NULL)
 		{
 			if (strcmp(needle[i], haystack[j]) == 0)
-<<<<<<< HEAD
+
 			/* Need to implement custom strcmp */
-=======
->>>>>>> 2f7acaae146f777c2596379b7fe3104be88827e2
 			{
 				return (1);
 			}
