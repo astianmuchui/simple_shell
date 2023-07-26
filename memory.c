@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * _realloc - reallocates a memory block using malloc and free
- * @buffer: pointer to the memory previously allocated
- * @size: size in bytes of the allocated space for ptr
- * Return: pointer to the newly allocated memory
+* _realloc - reallocates a memory block using malloc and free
+* @buffer: pointer to the memory previously allocated
+* @size: size in bytes of the allocated space for ptr
+* Return: pointer to the newly allocated memory
 */
 
 void *_realloc(void *buffer, size_t size)

@@ -5,6 +5,7 @@
 * @args: arguments
 * Return: -1
 */
+
 int _exec_(char **args)
 {
 	pid_t pid;
@@ -21,7 +22,7 @@ int _exec_(char **args)
 		if (pid == 0)
 		{
 			envp = returnenv();
-			if (execve(*args, args, envp) == -1)
+			if (execve(joinPath(BIN, *args), args, envp) == -1)
 			{
 				perror("Error executing command");
 			}
@@ -38,6 +39,7 @@ int _exec_(char **args)
 		{
 			waitpid(pid, &status, WUNTRACED);
 		}
+		return (-1);
 	}
 
 	}
