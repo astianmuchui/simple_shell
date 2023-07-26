@@ -15,6 +15,14 @@ void interactive(void)
 		line = _get_cmd_();
 		args = getArgs(line);
 
+		if (strcmp(line, "exit") == 0)
+		{
+			free(line); /* Free memory allocated to line */
+			free(args); /* Free memory allocated to args */
+
+			exit(EXIT_SUCCESS);
+			break;
+		}
 		status = _exec_(args); /* Execute command */
 		free(line); /* Free memory allocated to line */
 		free(args); /* Free memory allocated to args */
@@ -159,6 +167,13 @@ int _cmd_isvalid(char *cmd)
 		if (strcmp(cmd, "env"))
 		{
 			printenv();
+			return (0);
+		}
+
+		else if (strcmp(cmd, "exit"))
+		{
+			printf("Exiting shell...\n");
+			exit(EXIT_SUCCESS);
 			return (0);
 		}
 
