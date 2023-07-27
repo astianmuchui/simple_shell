@@ -49,6 +49,7 @@ int contains_builtin(char **arg);
 
 int path_exists(char *path);
 void cd(char **args);
+char *determine_path(char *argv);
 
 char *getarg(char **args);
 

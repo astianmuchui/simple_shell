@@ -1,3 +1,2 @@
 #!/bin/bash
-gcc -Wall -Wextra -pedantic -std=gnu89 *.c -o hsh ;
-./hsh
+gcc -Wall -Wextra -pedantic -std=gnu89 *.c -o hsh

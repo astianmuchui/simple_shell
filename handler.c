@@ -36,9 +36,7 @@ void interactive(void)
 		}
 
 	} while (status == -1);
-
 }
-
 
 /**
 * shellNotInteractive - execute shell in non-interactive mode

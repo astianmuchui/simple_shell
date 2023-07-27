@@ -23,7 +23,7 @@ int _exec_(char **args)
 		{
 			envp = returnenv();
 
-			if (execve(joinPath(BIN, *args), args, envp) == -1)
+			if (execve(determine_path(*args), args, envp) == -1)
 			{
 				perror("Error executing command");
 			}
@@ -31,6 +31,7 @@ int _exec_(char **args)
 			{
 				return (-1);
 			}
+
 		}
 		else if (pid < 0)
 		{
