@@ -55,12 +55,12 @@ int contains_builtin(char **arg)
 
 int path_exists(char *path)
 {
-        struct stat info;
+	struct stat info;
 
-        if (stat(path, &info) != -1)
-        {
-                return (1);
-        }
+	if (stat(path, &info) != -1)
+	{
+		return (1);
+	}
 	else
 	{
 		return (0);
