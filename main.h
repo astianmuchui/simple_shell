@@ -35,6 +35,7 @@ char *joinPath(char *dir, char *file);
 
 int _cmd_isvalid(char *cmd);
 int _strlen(char *string);
+int _strcmp(const char *s1, const char *s2);
 int *_count(char **array);
 
 char *_strtok(char *str, const char *delim);

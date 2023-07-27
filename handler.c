@@ -14,7 +14,7 @@ void interactive(void)
 		line = _get_cmd_();
 		args = getArgs(line);
 
-		if (strcmp(line, "exit") == 0)
+		if (_strcmp(line, "exit") == 0)
 		{
 			free(line); /* Free memory allocated to line */
 			free(args); /* Free memory allocated to args */
@@ -105,7 +105,7 @@ char *joinPath(char *dir, char *file)
 
 	if (!path)
 	{
-		fprintf(stderr, "Unable to allocate memory\n");
+		perror("memory error");
 		exit(EXIT_FAILURE);
 	}
 
@@ -163,15 +163,14 @@ int _cmd_isvalid(char *cmd)
 
 	else if (contains_builtin((char **) cmd))
 	{
-		if (strcmp(cmd, "env"))
+		if (_strcmp(cmd, "env"))
 		{
 			printenv();
 			return (0);
 		}
 
-		else if (strcmp(cmd, "exit"))
+		else if (_strcmp(cmd, "exit"))
 		{
-			printf("Exiting shell...\n");
 			exit(EXIT_SUCCESS);
 			return (0);
 		}

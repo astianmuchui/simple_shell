@@ -15,9 +15,7 @@ int _str_contains(char **needle, char **haystack)
 	{
 		while (haystack[j] != NULL)
 		{
-			if (strcmp(needle[i], haystack[j]) == 0)
-
-			/* Need to implement custom strcmp */
+			if (_strcmp(needle[i], haystack[j]) == 0)
 			{
 				return (1);
 			}
@@ -140,3 +138,4 @@ char *_strtok(char *str, const char *delim)
 
 	return (eliminateWhitespaces(token));
 }
+
