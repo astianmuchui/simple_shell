@@ -150,7 +150,7 @@ int _cmd_isvalid(char *cmd)
 		flag = 0;
 	}
 
-	if (access(joinPath(BIN, cmd), F_OK) == 0 && 
+	if (access(joinPath(BIN, cmd), F_OK) == 0 &&
 			access(joinPath(BIN, cmd), X_OK) == 0) /* chmod a+x */
 	{
 		flag = 0;
