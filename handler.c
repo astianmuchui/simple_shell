@@ -145,15 +145,16 @@ int _cmd_isvalid(char *cmd)
 	int flag = -1;
 
 
-	if (access(cmd, F_OK) == 0 && access(cmd, X_OK) == 0 ) /* chmod a+x */
-        {
+	if (access(cmd, F_OK) == 0 && access(cmd, X_OK) == 0) /* chmod a+x */
+	{
 		flag = 0;
-        }
-        
-        if (access(joinPath(BIN, cmd), F_OK) == 0 && access(joinPath(BIN, cmd), X_OK) == 0) /* chmod a+x */
-        {
+	}
+
+	if (access(joinPath(BIN, cmd), F_OK) == 0 && 
+			access(joinPath(BIN, cmd), X_OK) == 0) /* chmod a+x */
+	{
 		flag = 0;
-        }
+	}
 
 	if (contains_builtin((char **) cmd) == 1)
 	{
