@@ -31,13 +31,11 @@ int _exec_(char **args)
 			{
 				return (-1);
 			}
-
 		}
 		else if (pid < 0)
 		{
 			perror("Could not fork a new process");
                 }
-
 		else
 		{
 			while (!WIFEXITED(status) && !WIFSIGNALED(status))
@@ -46,7 +44,6 @@ int _exec_(char **args)
 			}
 
 			wait(NULL);
-			interactive();
 			return (-1);
 		}
 	}

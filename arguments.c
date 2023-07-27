@@ -50,13 +50,20 @@ char **getArgs(char *line)
 		exit(EXIT_FAILURE);
 	}
 
+	/* Check if the line is empty or only contains whitespace */
+	if (line == NULL || line[0] == '\n' || line[0] == ' ')
+	{
+		/* Re-prompt again */
+		interactive();
+	}
+
 	token = _strtok(line, DELIM); /* Replace this with custom strtok later */
 
 	while (token != NULL)
 	{
 		if (token[0] == '#')
 		{
-			/* Handle comments */
+			/* Handle comments and whitespace */
 			break;
 		}
 
