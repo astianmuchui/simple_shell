@@ -142,26 +142,23 @@ char *joinPath(char *dir, char *file)
 
 int _cmd_isvalid(char *cmd)
 {
-	/* Check if the command is an executable in the current path */
-	if (access(joinPath(PWD, cmd), F_OK) == 0)
+	int flag = -1;
+
+
+	if (access(cmd, F_OK) == 0 && access(cmd, X_OK) == 0 ) /* chmod a+x */
+        {
+		flag = 0;
+        }
+        
+        if (access(joinPath(BIN, cmd), F_OK) == 0 && access(joinPath(BIN, cmd), X_OK) == 0) /* chmod a+x */
+        {
+		flag = 0;
+        }
+
+	if (contains_builtin((char **) cmd) == 1)
 	{
-		/* The file also needs to have a+x permissions */
-
-		if (access(joinPath(PWD, cmd), X_OK) == 0)
-		{
-			return (1);
-		}
-
-		else
-		{
-			return (-1);
-		}
+		flag = 0;
 	}
 
-	else if (access(joinPath(PATH, cmd), F_OK) == 0)
-	{
-		return (1);
-	}
-
-	return (-1);
+	return (flag);
 }

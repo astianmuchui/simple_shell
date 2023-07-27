@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /**
 * _get_cmd_ - get command from stdin
 * Return: char ptr
@@ -46,7 +45,7 @@ char **getArgs(char *line)
 
 	if (!args)
 	{
-		fprintf(stderr, "Unable to allocate memory\n");
+		perror("Unable to allocate memory\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -57,7 +56,7 @@ char **getArgs(char *line)
 		interactive();
 	}
 
-	token = _strtok(line, DELIM); /* Replace this with custom strtok later */
+	token = _strtok(line, DELIM);
 
 	while (token != NULL)
 	{
@@ -74,11 +73,10 @@ char **getArgs(char *line)
 		{
 			buffer_size += 64;
 			args = _realloc(args, buffer_size * sizeof(char *));
-			/* Replace this with custom realloc later */
 
 			if (!args)
 			{
-				fprintf(stderr, "Unable to allocate memory\n");
+				perror("Unable to allocate memory\n");
 				exit(EXIT_FAILURE);
 			}
 		}

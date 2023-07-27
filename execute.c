@@ -15,7 +15,7 @@ int _exec_(char **args)
 	if (args[0] == NULL)
 		return (-1);
 
-	if (_cmd_isvalid(args[0])) /* Validate Command */
+	if (_cmd_isvalid(*args) == 0) /* Validate Command */
 	{
 		pid = fork();
 
@@ -50,7 +50,7 @@ int _exec_(char **args)
 
 	else
 	{
-		perror("Invalid command \n");
+		perror("Invalid command ");
 		interactive();
 	}
 
