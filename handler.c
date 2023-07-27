@@ -16,12 +16,16 @@ void interactive(void)
 
 		if (_strcmp(line, "exit") == 0)
 		{
-			free(line); /* Free memory allocated to line */
-			free(args); /* Free memory allocated to args */
-
+			free(line);
+			free(args);
 			exit(EXIT_SUCCESS);
-			break;
 		}
+
+		if (_strcmp(line, "env") == 0)
+		{
+			printenv();
+		}
+
 		status = _exec_(args); /* Execute command */
 		free(line); /* Free memory allocated to line */
 		free(args); /* Free memory allocated to args */
@@ -158,23 +162,6 @@ int _cmd_isvalid(char *cmd)
 
 	else if (access(joinPath(PATH, cmd), F_OK) == 0)
 	{
-		return (1);
-	}
-
-	else if (contains_builtin((char **) cmd))
-	{
-		if (_strcmp(cmd, "env"))
-		{
-			printenv();
-			return (0);
-		}
-
-		else if (_strcmp(cmd, "exit"))
-		{
-			exit(EXIT_SUCCESS);
-			return (0);
-		}
-
 		return (1);
 	}
 

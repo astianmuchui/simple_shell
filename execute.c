@@ -3,7 +3,7 @@
 /**
 * _exec_ - execute command
 * @args: arguments
-* Return: -1
+* Return: -2
 */
 
 int _exec_(char **args)
@@ -22,31 +22,40 @@ int _exec_(char **args)
 		if (pid == 0)
 		{
 			envp = returnenv();
+
 			if (execve(joinPath(BIN, *args), args, envp) == -1)
 			{
 				perror("Error executing command");
 			}
+			else
+			{
+				return (-1);
+			}
 		}
-
-	else if (pid < 0)
-	{
-		perror("errors in forking.\n");
-	}
-
-	else
-	{
-		while (!WIFEXITED(status) && !WIFSIGNALED(status))
+		else if (pid < 0)
 		{
-			waitpid(pid, &status, WUNTRACED);
+			perror("Could not fork a new process");
+                }
+
+		else
+		{
+			while (!WIFEXITED(status) && !WIFSIGNALED(status))
+			{
+				waitpid(pid, &status, WUNTRACED);
+			}
+
+			wait(NULL);
+			interactive();
+			return (-1);
 		}
-		return (-1);
 	}
 
-	}
 	else
 	{
-		perror("Command not found");
+		perror("Invalid command \n");
+		interactive();
 	}
+
 	return (-1);
 }
 

@@ -7,8 +7,6 @@
 * Return: 0 always
 */
 
-
-
 int main(int ac, char **av)
 {
 	if (isatty(STDIN_FILENO))

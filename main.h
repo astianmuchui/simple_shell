@@ -12,6 +12,7 @@
 #include <limits.h>
 #include <errno.h>
 #include <signal.h>
+#include <sys/stat.h>
 
 
 #define BUFSIZE 1024
@@ -45,6 +46,8 @@ void *_realloc(void *buffer, size_t size);
 void printenv(void);
 
 int contains_builtin(char **arg);
+
+int path_exists(char *path);
 void cd(char **args);
 
 char *getarg(char **args);

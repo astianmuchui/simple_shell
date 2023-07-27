@@ -48,6 +48,27 @@ int contains_builtin(char **arg)
 }
 
 /**
+* path_exists - checks if a path exists
+* @path: path
+* Return: 1 or 0
+*/
+
+int path_exists(char *path)
+{
+        struct stat info;
+
+        if (stat(path, &info) != -1)
+        {
+                return (1);
+        }
+	else
+	{
+		return (0);
+	}
+
+}
+
+/**
 * cd - changes a working directory
 * @args: directory
 * Return: none
@@ -55,24 +76,20 @@ int contains_builtin(char **arg)
 
 void cd(char **args)
 {
-	DIR *dir;
+	char *arg = (char *) args;
 
-	if (args == NULL)
+	if (!args)
 	{
-		perror("Please provide a directory\n");
+		perror("Too few arguments \n");
 	}
 
-	/* Check if the directory actually exists */
-	dir = opendir(*args);
-
-	if (dir == NULL)
+	if (path_exists(arg) == 1)
 	{
-		perror("Directory does not exist\n");
+		chdir(arg);
 	}
 	else
 	{
-		chdir(*args);
-		closedir(dir);
+		perror("Directory does not exist\n");
 	}
 }
 

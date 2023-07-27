@@ -19,6 +19,7 @@ char *_get_cmd_(void)
 	{
 		if (feof(stdin))
 		{
+			write(STDOUT_FILENO, "\n", 2);
 			exit(EXIT_SUCCESS);
 		}
 		else
@@ -32,9 +33,9 @@ char *_get_cmd_(void)
 }
 
 /**
- * getArgs - get arguments from command line
- * @line: command line
- * Return: char ptr
+* getArgs - get arguments from command line
+* @line: command line
+* Return: char ptr
 */
 
 char **getArgs(char *line)
@@ -55,6 +56,7 @@ char **getArgs(char *line)
 	{
 		if (token[0] == '#')
 		{
+			/* Handle comments */
 			break;
 		}
 
