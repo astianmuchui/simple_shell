@@ -17,7 +17,6 @@
 
 #define BUFSIZE 1024
 #define DELIM " \t\r\n\a"
-#define _GNU_SOURCE
 #define PATH getenv("PATH")
 #define PWD getenv("PWD")
 #define BIN "/bin"
