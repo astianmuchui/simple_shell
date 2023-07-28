@@ -32,29 +32,29 @@ int _exec_(char **args);
 
 int _str_contains(char **needle, char **haystack);
 void shellNotInteractive(int ac, char **av);
-char *joinPath(char *dir, char *file);
 
+char *joinPath(char *dir, char *file);
 int _cmd_isvalid(char *cmd);
+
 int _strlen(char *string);
 int _strcmp(const char *s1, const char *s2);
+
 int *_count(char **array);
-
 char *_strtok(char *str, const char *delim);
+
 char *eliminateWhitespaces(char *token);
-
 void *_realloc(void *buffer, size_t size);
-void printenv(void);
 
+void printenv(void);
 int contains_builtin(char **arg);
 
 int path_exists(char *path);
 void cd(char **args);
-char *determine_path(char *argv);
 
+char *determine_path(char *argv);
 char *getarg(char **args);
 
 char **returnenv(void);
-
 void free_buffers(int n, ...);
 
 #endif

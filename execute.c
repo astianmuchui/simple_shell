@@ -79,7 +79,6 @@ char **returnenv(void)
 	}
 
 	envp[envC] = NULL;
-
 	return (envp);
 }
 

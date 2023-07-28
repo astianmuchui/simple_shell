@@ -77,7 +77,7 @@ char *eliminateWhitespaces(char *token)
 	int i, j;
 	char *newToken;
 
-	newToken = malloc(sizeof(char) * strlen(token));
+	newToken = malloc(sizeof(char) * _strlen(token));
 
 	for (i = 0, j = 0; token[i] != '\0'; i++)
 	{
