@@ -14,6 +14,7 @@ int _exec_(char **args)
 
 	path = determine_path(*args);
 	envp = returnenv();
+
 	if (args[0] == NULL)
 		return (-1);
 
@@ -25,7 +26,6 @@ int _exec_(char **args)
 			if (execve(path, args, envp) == -1)
 			{
 				perror("Error executing command");
-				free_buffers(2, path, envp);
 			}
 			else
 			{

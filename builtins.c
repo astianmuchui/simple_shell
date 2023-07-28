@@ -7,12 +7,11 @@
 
 void printenv(void)
 {
-	char **env = environ;
 	int i = 0;
-
+	char **env = environ;
 	for (i = 0; env[i] != NULL; i++)
 	{
-		printf("%s\n", env[i]);
+		write(STDOUT_FILENO, env[i], _strlen(env[i]));
 	}
 }
 
@@ -65,7 +64,6 @@ int path_exists(char *path)
 	{
 		return (0);
 	}
-
 }
 
 /**
@@ -113,4 +111,5 @@ void exit_shell(int arg)
 	{
 		exit(arg);
 	}
+
 }

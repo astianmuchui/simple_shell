@@ -8,7 +8,7 @@
 
 char *determine_path(char *argv)
 {
-	char *path;
+	char *path, *joinedPath = joinPath(BIN, argv);
 
 	if (strstr(argv, (const char *) BIN))
 	{
@@ -16,17 +16,18 @@ char *determine_path(char *argv)
 	}
 
 	if (access(argv, F_OK) == 0 && access(argv, X_OK) == 0)
-		/* chmod a+x */
 	{
 		path = argv;
 	}
 
-	if (access(joinPath(BIN, argv),
-				F_OK) == 0 && access(joinPath(BIN, argv), X_OK) == 0) /* chmod a+x */
+	if (access(joinedPath, F_OK) == 0 && access(joinedPath, X_OK) == 0)
 	{
 		path = joinPath(BIN, argv);
 	}
-
+	else
+	{
+		free(path);
+	}
+	
 	return (path);
-
 }

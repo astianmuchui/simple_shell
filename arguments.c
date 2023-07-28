@@ -84,6 +84,7 @@ char **getArgs(char *line)
 		token = _strtok(NULL, DELIM);
 	}
 
+	free(token);
 	args[i] = NULL;
 	return (args);
 }
