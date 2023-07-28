@@ -3,29 +3,29 @@
 /**
 * _exec_ - execute command
 * @args: arguments
-* Return: -2
+* Return: 1 or -1
 */
 
 int _exec_(char **args)
 {
 	pid_t pid;
 	int status;
-	char **envp;
+	char **envp, *path;
 
+	path = determine_path(*args);
+	envp = returnenv();
 	if (args[0] == NULL)
 		return (-1);
 
 	if (_cmd_isvalid(*args) == 0) /* Validate Command */
 	{
 		pid = fork();
-
 		if (pid == 0)
 		{
-			envp = returnenv();
-
-			if (execve(determine_path(*args), args, envp) == -1)
+			if (execve(path, args, envp) == -1)
 			{
 				perror("Error executing command");
+				free_buffers(2, path, envp);
 			}
 			else
 			{
@@ -39,21 +39,18 @@ int _exec_(char **args)
 		else
 		{
 			while (!WIFEXITED(status) && !WIFSIGNALED(status))
-			{
 				waitpid(pid, &status, WUNTRACED);
-			}
-
 			wait(NULL);
 			return (-1);
 		}
 	}
-
 	else
 	{
 		perror("Invalid command ");
 		interactive();
 	}
 
+	free_buffers(2, path, envp);
 	return (-1);
 }
 

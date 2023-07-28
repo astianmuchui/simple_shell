@@ -13,6 +13,7 @@
 #include <errno.h>
 #include <signal.h>
 #include <sys/stat.h>
+#include <stdarg.h>
 
 
 #define BUFSIZE 1024
@@ -54,5 +55,6 @@ char *getarg(char **args);
 
 char **returnenv(void);
 
+void free_buffers(int n, ...);
 
 #endif

@@ -39,3 +39,23 @@ void *_realloc(void *buffer, size_t size)
 
 	return (new_buffer);
 }
+
+/**
+* free_buffers - free buffers
+* @n: number of buffers
+*/
+
+void free_buffers(int n, ...)
+{
+	int i = 0;
+	va_list args;
+
+	va_start(args, n);
+
+	for (i = 0; i < n; i++)
+	{
+		free(va_arg(args,void *));
+	}
+
+	va_end(args);
+}
