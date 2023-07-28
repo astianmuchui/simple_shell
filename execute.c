@@ -50,7 +50,8 @@ int _exec_(char **args)
 		interactive();
 	}
 
-	free_buffers(2, path, envp);
+	free(path);
+	free(envp);
 	return (-1);
 }
 

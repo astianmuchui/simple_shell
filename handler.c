@@ -143,15 +143,14 @@ char *joinPath(char *dir, char *file)
 int _cmd_isvalid(char *cmd)
 {
 	int flag = -1;
-
+	char *path = joinPath(BIN, cmd);
 
 	if (access(cmd, F_OK) == 0 && access(cmd, X_OK) == 0) /* chmod a+x */
 	{
 		flag = 0;
 	}
 
-	if (access(joinPath(BIN, cmd), F_OK) == 0 &&
-			access(joinPath(BIN, cmd), X_OK) == 0) /* chmod a+x */
+	if (access(path, F_OK) == 0 && access(path, X_OK) == 0) /* chmod a+x */
 	{
 		flag = 0;
 	}

@@ -26,7 +26,7 @@ char *determine_path(char *argv)
 	}
 	else
 	{
-		free(path);
+		free(joinedPath);
 	}
 	
 	return (path);

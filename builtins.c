@@ -81,6 +81,16 @@ void cd(char **args)
 		perror("Too few arguments \n");
 	}
 
+	if (arg == NULL)
+	{
+		chdir(getenv("HOME"));
+	}
+
+	if (_strcmp(arg,"-"))
+	{
+		chdir(getenv("OLDPWD"));
+	}
+
 	if (path_exists(arg) == 1)
 	{
 		chdir(arg);
@@ -89,6 +99,8 @@ void cd(char **args)
 	{
 		perror("Directory does not exist\n");
 	}
+
+	free(args);
 }
 
 /**
@@ -111,5 +123,4 @@ void exit_shell(int arg)
 	{
 		exit(arg);
 	}
-
 }
